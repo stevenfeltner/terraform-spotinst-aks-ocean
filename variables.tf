@@ -36,10 +36,14 @@ variable "custom_data" {
   default = null
   description = "(Optional) Must contain a valid Base64 encoded string."
 }
-variable "msi_name" {
-  type = string
+## managed_service_identity ##
+variable "managed_service_identity" {
+  type = object({
+    resource_group_name = string
+    name = string
+  })
   default = null
-  description = "Name of the Managed Service Identity."
+  description = "List of Managed Service Identity objects."
 }
 variable "tags" {
   type = list(object({
